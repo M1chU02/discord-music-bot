@@ -1,4 +1,7 @@
 import ffmpeg from "ffmpeg-static";
+if (ffmpeg) {
+  process.env.FFMPEG_PATH = ffmpeg;
+}
 import "dotenv/config";
 import {
   Client,
