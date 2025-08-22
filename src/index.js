@@ -1,3 +1,4 @@
+import ffmpeg from "ffmpeg-static";
 import "dotenv/config";
 import {
   Client,
@@ -42,6 +43,7 @@ const registerLocalCommands = async () => {
 // Usunięto: emitNewSongOnly, leaveOnFinish, leaveOnStop, leaveOnEmpty (nie są już wspierane)
 // Pluginy bez opcji, bo ich stare opcje też są odrzucone.
 export const distube = new DisTube(client, {
+  ffmpeg: ffmpeg, // używaj ffmpeg-static
   plugins: [new YouTubePlugin(), new SpotifyPlugin()],
 });
 
