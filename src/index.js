@@ -1,6 +1,17 @@
 import ffmpeg from "ffmpeg-static";
+import path from "node:path";
+
 if (ffmpeg) {
+  // pokaż w logach, że mamy ścieżkę:
+  console.log("FFMPEG (static) ->", ffmpeg);
+
+  // dla bibliotek typu prism-media:
   process.env.FFMPEG_PATH = ffmpeg;
+
+  // a tu dopinamy katalog z binarką do PATH,
+  // żeby wywołanie "ffmpeg" też działało:
+  const dir = path.dirname(ffmpeg);
+  process.env.PATH = `${dir}:${process.env.PATH || ""}`;
 }
 import "dotenv/config";
 import {
